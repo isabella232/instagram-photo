@@ -1,0 +1,60 @@
+extends layout
+
+block content
+
+  if showLogin
+    div.row
+      div.col-md-12.text-center
+        h1 Instagram Photo Printer
+        p Before you can print and mail a photo, you need to authorize your Instagram account.
+        a(href="/authorize-user" class="btn btn-primary") Login to Instagram
+  else
+    div.row
+      div.col-md-6
+        img(src= image, width="250px")
+        div
+          br
+          a.btn.btn-default(href="/") Random Photo
+
+      div.col-md-6
+        h1 Print & Mail Photo
+
+        form(action="/send-photo", method="post")
+          div(class="form-group col-md-12")
+            label Name
+            input(
+              type="text"
+              class="form-control"
+              name="name"
+            )
+          div(class="form-group col-md-12")
+            label Address
+            input(
+              type="text"
+              class="form-control"
+              name="address"
+            )
+          div(class="form-group col-md-4")
+            label City
+            input(
+              type="text"
+              class="form-control"
+              name="city"
+            )
+          div(class="form-group col-md-4")
+            label State
+            input(
+              type="text"
+              class="form-control"
+              name="state"
+            )
+          div(class="form-group col-md-4")
+            label Zip
+            input(
+              type="text"
+              class="form-control"
+              name="zip"
+            )
+          div(class="form-group col-md-12")
+            input(type="hidden", value=image, name="image")
+            button(type="submit", class="btn btn-primary") Mail Photo >
